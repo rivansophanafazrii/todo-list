@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Todo List</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+
+    <!-- Header -->
+    <header class="app-header">
+      <div class="app-title">
+        <span class="app-icon" aria-hidden="true">📋</span>
+        <h1>Todo List</h1>
+      </div>
+      <span id="todo-counter" class="todo-counter" aria-live="polite"></span>
+    </header>
+
+    <!-- Input Section -->
+    <section class="input-section" aria-label="Tambah tugas baru">
+      <input
+        type="text"
+        id="todo-input"
+        class="todo-input"
+        placeholder="Tambahkan tugas baru... (3–50 karakter)"
+        maxlength="50"
+        aria-label="Deskripsi tugas"
+      />
+      <button id="add-btn" class="add-btn" aria-label="Tambah tugas">
+        <span class="btn-icon" aria-hidden="true">＋</span>
+        <span class="btn-label">Tambah</span>
+      </button>
+    </section>
+
+    <!-- Validation Message -->
+    <p id="validation-msg" class="validation-msg" role="alert" aria-live="polite"></p>
+
+    <!-- Todo List -->
+    <section aria-label="Daftar tugas">
+      <ul id="todo-list" class="todo-list"></ul>
+      <div id="empty-state" class="empty-state">
+        <span class="empty-icon" aria-hidden="true">🗒️</span>
+        <p class="empty-title">Belum ada tugas</p>
+        <p class="empty-subtitle">Tambahkan tugas pertamamu di atas!</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>by rivansophanafazri</p>
+    </footer>
+
+  </main>
+
+  <script src="storage.js"></script>
+  <script src="todo.js"></script>
+  <script src="ui.js"></script>
+</body>
+</html>

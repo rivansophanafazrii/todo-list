@@ -1,0 +1,442 @@
+﻿/* =============================================
+   CSS Custom Properties (Design Tokens)
+   ============================================= */
+:root {
+  --color-bg: #fffbe6;
+  --color-surface: #ffffff;
+  --color-primary: #ffd600;
+  --color-primary-hover: #ffc200;
+  --color-success: #22c55e;
+  --color-danger: #ff3b3b;
+  --color-danger-hover: #e00000;
+  --color-completed-bg: #f5f5f5;
+  --color-black: #000000;
+  --color-text: #1a1a1a;
+  --color-muted: #888888;
+  --color-error: #ff3b3b;
+  --shadow-card: 6px 6px 0px var(--color-black);
+  --shadow-item: 3px 3px 0px var(--color-black);
+  --shadow-btn: 4px 4px 0px var(--color-black);
+  --border: 3px solid var(--color-black);
+  --radius: 0px;
+}
+
+/* =============================================
+   Base Reset & Body
+   ============================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  padding: 40px 16px;
+}
+
+/* =============================================
+   .container — Card utama (Neobrutalism)
+   ============================================= */
+.container {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 32px 28px;
+  background-color: var(--color-surface);
+  border: var(--border);
+  box-shadow: var(--shadow-card);
+}
+
+/* =============================================
+   .app-header — Title row with counter
+   ============================================= */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.app-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.app-icon {
+  font-size: 2rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.app-header h1 {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--color-black);
+  letter-spacing: -0.5px;
+}
+
+.app-footer {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #888;
+}
+
+/* Counter badge */
+.todo-counter {
+  background-color: var(--color-primary);
+  color: var(--color-black);
+  border: var(--border);
+  box-shadow: 2px 2px 0 var(--color-black);
+  font-size: 0.75rem;
+  font-weight: 900;
+  padding: 4px 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* =============================================
+   .input-section — Flex row: input + button
+   ============================================= */
+.input-section {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+/* =============================================
+   .todo-input — Text input field
+   ============================================= */
+.todo-input {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 10px 14px;
+  border: var(--border);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  outline: none;
+  transition: box-shadow 0.1s ease;
+}
+
+.todo-input::placeholder {
+  font-weight: 400;
+  color: var(--color-muted);
+}
+
+.todo-input:focus {
+  box-shadow: 3px 3px 0px var(--color-black);
+}
+
+/* =============================================
+   .add-btn — Add button (Neobrutalism)
+   ============================================= */
+.add-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  background-color: var(--color-primary);
+  color: var(--color-black);
+  border: var(--border);
+  box-shadow: var(--shadow-btn);
+  font-size: 1rem;
+  font-weight: 900;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: box-shadow 0.1s ease, transform 0.1s ease, background-color 0.1s ease;
+}
+
+.add-btn:hover {
+  background-color: var(--color-primary-hover);
+  box-shadow: 2px 2px 0px var(--color-black);
+  transform: translate(2px, 2px);
+}
+
+.add-btn:active {
+  box-shadow: 0px 0px 0px var(--color-black);
+  transform: translate(4px, 4px);
+}
+
+.btn-icon {
+  font-size: 1.1rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+/* =============================================
+   .validation-msg — Inline validation/error message
+   ============================================= */
+.validation-msg {
+  color: var(--color-error);
+  font-weight: 700;
+  font-size: 0.875rem;
+  min-height: 1.4em;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.validation-msg:not(:empty)::before {
+  content: '⚠';
+  flex-shrink: 0;
+}
+
+/* =============================================
+   .todo-list — List container
+   ============================================= */
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* =============================================
+   .todo-item — Each todo row (Neobrutalism)
+   ============================================= */
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 12px;
+  border: var(--border);
+  margin-bottom: 8px;
+  box-shadow: var(--shadow-item);
+  background-color: var(--color-surface);
+  transition: box-shadow 0.1s ease, transform 0.1s ease;
+}
+
+.todo-item:hover {
+  box-shadow: 4px 4px 0 var(--color-black);
+}
+
+.todo-item.completed {
+  background-color: var(--color-completed-bg);
+}
+
+.todo-item.completed .todo-text {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+/* =============================================
+   .todo-text — Task description label
+   ============================================= */
+.todo-text {
+  flex: 1 1 0;
+  min-width: 0;
+  font-weight: 700;
+  font-size: 1rem;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+/* =============================================
+   .complete-btn — Toggle completion button
+   ============================================= */
+.complete-btn {
+  width: 34px;
+  height: 34px;
+  border: 2px solid var(--color-black);
+  border-radius: 50%;
+  background-color: var(--color-surface);
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+  color: var(--color-black);
+}
+
+.complete-btn:hover {
+  transform: scale(1.1);
+  background-color: #f0fdf4;
+}
+
+.todo-item.completed .complete-btn {
+  background-color: var(--color-success);
+  border-color: var(--color-black);
+  color: #ffffff;
+}
+
+/* =============================================
+   .delete-btn — Delete button (Neobrutalism)
+   ============================================= */
+.delete-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background-color: var(--color-danger);
+  color: #ffffff;
+  border: 2px solid var(--color-black);
+  box-shadow: 2px 2px 0px var(--color-black);
+  font-weight: 900;
+  font-size: 0.9rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: box-shadow 0.1s ease, transform 0.1s ease, background-color 0.1s ease;
+}
+
+.delete-btn:hover {
+  background-color: var(--color-danger-hover);
+  box-shadow: 1px 1px 0px var(--color-black);
+  transform: translate(1px, 1px);
+}
+
+.delete-btn:active {
+  box-shadow: 0px 0px 0px var(--color-black);
+  transform: translate(2px, 2px);
+}
+
+/* =============================================
+   .empty-state — Placeholder when list is empty
+   ============================================= */
+.empty-state {
+  text-align: center;
+  padding: 40px 16px;
+  display: none;
+}
+
+.empty-state.visible {
+  display: block;
+}
+
+.empty-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 12px;
+  opacity: 0.6;
+}
+
+.empty-title {
+  font-weight: 900;
+  font-size: 1.1rem;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.empty-subtitle {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+/* =============================================
+   Responsive — Tablet (≤ 640px)
+   ============================================= */
+@media (max-width: 640px) {
+  body {
+    padding: 20px 12px;
+  }
+
+  .container {
+    padding: 24px 18px;
+    box-shadow: 4px 4px 0px var(--color-black);
+  }
+
+  .app-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .app-icon {
+    font-size: 1.6rem;
+  }
+}
+
+/* =============================================
+   Responsive — Mobile (≤ 480px)
+   ============================================= */
+@media (max-width: 480px) {
+  body {
+    padding: 12px 8px;
+  }
+
+  .container {
+    padding: 20px 14px;
+    box-shadow: 3px 3px 0px var(--color-black);
+  }
+
+  .app-header {
+    margin-bottom: 16px;
+  }
+
+  .app-header h1 {
+    font-size: 1.4rem;
+    letter-spacing: -0.3px;
+  }
+
+  .app-icon {
+    font-size: 1.4rem;
+  }
+
+  /* Stack input + button vertically on very small screens */
+  .input-section {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .add-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 18px;
+  }
+
+  .todo-input {
+    width: 100%;
+    font-size: 0.95rem;
+  }
+
+  .todo-item {
+    gap: 8px;
+    padding: 10px 10px;
+  }
+
+  .todo-text {
+    font-size: 0.95rem;
+  }
+
+  .complete-btn,
+  .delete-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 0.85rem;
+  }
+
+  .btn-label {
+    display: inline;
+  }
+}
+
+/* =============================================
+   Responsive — Extra small (≤ 360px)
+   ============================================= */
+@media (max-width: 360px) {
+  .app-header h1 {
+    font-size: 1.2rem;
+  }
+
+  .todo-text {
+    font-size: 0.875rem;
+  }
+
+  .complete-btn,
+  .delete-btn {
+    width: 30px;
+    height: 30px;
+  }
+}
